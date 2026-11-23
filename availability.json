@@ -1,0 +1,156 @@
+{
+ "updated": "2026-11-23T13:14",
+ "whatsapp": "971586444285",
+ "units": [
+  {
+   "name": "Noor 1",
+   "area": "Dubai",
+   "beds": "To confirm",
+   "stay": "Monthly",
+   "photo": null,
+   "region": "dubai",
+   "status": "confirm",
+   "until": null
+  },
+  {
+   "name": "Sunrise Bay 1406",
+   "area": "Emaar Beachfront \u00b7 Dubai",
+   "beds": "To confirm",
+   "stay": "Monthly",
+   "photo": null,
+   "region": "dubai",
+   "status": "confirm",
+   "until": null
+  },
+  {
+   "name": "Liva",
+   "area": "Dubai",
+   "beds": "To confirm",
+   "stay": "Monthly",
+   "photo": null,
+   "region": "dubai",
+   "status": "confirm",
+   "until": null
+  },
+  {
+   "name": "The Square Tower",
+   "area": "Dubai",
+   "beds": "To confirm",
+   "stay": "Monthly",
+   "photo": null,
+   "region": "dubai",
+   "status": "confirm",
+   "until": null
+  },
+  {
+   "name": "Sunrise Bay 2106",
+   "area": "Emaar Beachfront \u00b7 Dubai",
+   "beds": "To confirm",
+   "stay": "Monthly",
+   "photo": "img/pms-5.jpg",
+   "region": "dubai",
+   "status": "rented",
+   "until": "2026-12-19"
+  },
+  {
+   "name": "Modern JVT Villa",
+   "area": "Private pool & gym \u00b7 JVT, Dubai",
+   "beds": "Villa",
+   "stay": "Monthly",
+   "photo": "img/prop-4.jpg",
+   "region": "dubai",
+   "status": "rented",
+   "until": "2026-12-15"
+  },
+  {
+   "name": "Stylish 2BR Penthouse",
+   "area": "Massive terrace \u00b7 JVC, Dubai",
+   "beds": "2 bedrooms",
+   "stay": "Short & monthly",
+   "photo": "img/prop-5.jpg",
+   "region": "dubai",
+   "status": "rented",
+   "until": "2027-08-03"
+  },
+  {
+   "name": "The Lofts West",
+   "area": "Downtown Dubai",
+   "beds": "2 bedrooms",
+   "stay": "Short & monthly",
+   "photo": "img/prop-8.jpg",
+   "region": "dubai",
+   "status": "rented",
+   "until": null
+  },
+  {
+   "name": "Downtown Luxe Retreat",
+   "area": "Boulevard Central \u00b7 Downtown Dubai",
+   "beds": "2 bedrooms",
+   "stay": "Short & monthly",
+   "photo": "img/prop-1.jpg",
+   "region": "dubai",
+   "status": "rented",
+   "until": null
+  },
+  {
+   "name": "The Arjan Hideout",
+   "area": "Near Miracle Garden \u00b7 Arjan, Dubai",
+   "beds": "Studio",
+   "stay": "Short & monthly",
+   "photo": "img/prop-6.jpg",
+   "region": "dubai",
+   "status": "rented",
+   "until": "2027-08-27"
+  },
+  {
+   "name": "Serenity by the Sea",
+   "area": "Beach access \u00b7 Dubai",
+   "beds": "1 bedroom",
+   "stay": "Short stay",
+   "photo": "img/pms-7.jpg",
+   "region": "dubai",
+   "status": "available",
+   "until": null
+  },
+  {
+   "name": "Lakeside 3BR",
+   "area": "Mountain views & BBQ \u00b7 Cape Town",
+   "beds": "3 bedrooms",
+   "stay": "Short stay",
+   "photo": "img/prop-3.jpg",
+   "region": "sa",
+   "status": "rented",
+   "until": "2026-12-02"
+  },
+  {
+   "name": "The Green Lawn House",
+   "area": "Gqeberha \u00b7 South Africa",
+   "beds": "To confirm",
+   "stay": "Short stay",
+   "photo": "img/prop-7.jpg",
+   "region": "sa",
+   "status": "available",
+   "until": null
+  },
+  {
+   "name": "The Grey House",
+   "area": "Mount Pleasant \u00b7 Gqeberha",
+   "beds": "2 bedrooms",
+   "stay": "Short stay",
+   "photo": "img/pms-3.jpg",
+   "region": "sa",
+   "status": "rented",
+   "until": "2026-12-01"
+  },
+  {
+   "name": "Garden Retreat",
+   "area": "Suite with patio & fire pit \u00b7 Gqeberha",
+   "beds": "Suite",
+   "stay": "Short stay",
+   "photo": "img/prop-2.jpg",
+   "region": "sa",
+   "status": "rented",
+   "until": "2026-12-01"
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "_note": "Display details per unit. pms_id links to YallaPMS properties.id; status comes from YallaPMS. Units with pms_id null are not in YallaPMS yet (status set manually). Edit freely; no Airbnb links by design.",
+  "whatsapp": "971586444285",
+  "units": [
+    {"pms_id": null, "name": "Noor 1", "area": "Dubai", "beds": "To confirm", "stay": "Monthly", "photo": null, "manual_status": "confirm"},
+    {"pms_id": 12,   "name": "Sunrise Bay 1406", "area": "Emaar Beachfront · Dubai", "beds": "To confirm", "stay": "Monthly", "photo": null},
+    {"pms_id": null, "name": "Liva", "area": "Dubai", "beds": "To confirm", "stay": "Monthly", "photo": null, "manual_status": "confirm"},
+    {"pms_id": null, "name": "The Square Tower", "area": "Dubai", "beds": "To confirm", "stay": "Monthly", "photo": null, "manual_status": "confirm"},
+    {"pms_id": 5,  "name": "Sunrise Bay 2106", "area": "Emaar Beachfront · Dubai", "beds": "To confirm", "stay": "Monthly", "photo": "img/pms-5.jpg"},
+    {"pms_id": 11, "name": "Modern JVT Villa", "area": "Private pool & gym · JVT, Dubai", "beds": "Villa", "stay": "Monthly", "photo": "img/prop-4.jpg"},
+    {"pms_id": 6,  "name": "Stylish 2BR Penthouse", "area": "Massive terrace · JVC, Dubai", "beds": "2 bedrooms", "stay": "Short & monthly", "photo": "img/prop-5.jpg"},
+    {"pms_id": 9,  "name": "The Lofts West", "area": "Downtown Dubai", "beds": "2 bedrooms", "stay": "Short & monthly", "photo": "img/prop-8.jpg"},
+    {"pms_id": 10, "name": "Downtown Luxe Retreat", "area": "Boulevard Central · Downtown Dubai", "beds": "2 bedrooms", "stay": "Short & monthly", "photo": "img/prop-1.jpg"},
+    {"pms_id": 8,  "name": "The Arjan Hideout", "area": "Near Miracle Garden · Arjan, Dubai", "beds": "Studio", "stay": "Short & monthly", "photo": "img/prop-6.jpg"},
+    {"pms_id": 7,  "name": "Serenity by the Sea", "area": "Beach access · Dubai", "beds": "1 bedroom", "stay": "Short stay", "photo": "img/pms-7.jpg"},
+    {"pms_id": 1,  "name": "Lakeside 3BR", "area": "Mountain views & BBQ · Cape Town", "beds": "3 bedrooms", "stay": "Short stay", "photo": "img/prop-3.jpg"},
+    {"pms_id": 2,  "name": "The Green Lawn House", "area": "Gqeberha · South Africa", "beds": "To confirm", "stay": "Short stay", "photo": "img/prop-7.jpg"},
+    {"pms_id": 3,  "name": "The Grey House", "area": "Mount Pleasant · Gqeberha", "beds": "2 bedrooms", "stay": "Short stay", "photo": "img/pms-3.jpg"},
+    {"pms_id": 4,  "name": "Garden Retreat", "area": "Suite with patio & fire pit · Gqeberha", "beds": "Suite", "stay": "Short stay", "photo": "img/prop-2.jpg"}
+  ]
+}
