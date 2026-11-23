@@ -1,8 +1,9 @@
 # co-host.pro Properties page: PREVIEW (not live)
 
-- `index.html`: the Properties page in the style of the live co-host.pro site (navy/copper, Playfair Display + Outfit). No Airbnb links.
-- `availability.json`: what the page reads: name, area, beds, stay type, photo, status (available / rented / confirm), until date. No guest data, no prices.
-- `listings.config.json`: display details per unit; `pms_id` links to YallaPMS `properties.id`.
-- `availability.sql` + `refresh.sh` + `build.py`: read-only pull from YallaPMS that rebuilds `availability.json`.
-- `img/`: current photos (from the live site backup and YallaPMS). New units show "Photos coming soon" until Jayson's content lands.
-- Inquire = WhatsApp +971 58 644 4285 with the property name prefilled (same as the live site's WhatsApp buttons).
+- `index.html`: Properties page in the live co-host.pro style. Two groups: **Monthly homes** and **Short stays** (dark band; drop the group by setting its units to `"hidden": true`). Click a card for photos, description and highlights.
+- `site-config.js`: the single WhatsApp number used by every button (`971586444285` now; alternative `971544785481`).
+- `listings.config.json`: display content per unit (from Jayson's 23 Nov content pack). No prices, no Airbnb links. Unknown facts are left out, not shown as placeholders.
+- `availability.json`: what the page reads (built by `build.py`). Status: available / rented (+ until date) / unknown (no badge).
+- `availability.sql` + `refresh.sh`: read-only pull of current stays from YallaPMS.
+- `img/<unit>/NN.webp` (1600 px) and `NN-sm.webp` (720 px): web-optimised photos, metadata stripped.
+- Inquire = WhatsApp with the property name prefilled.

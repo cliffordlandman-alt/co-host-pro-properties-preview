@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#182337">
+<link rel="icon" href="data:,">
 <title>Properties | Clifford The Co Host</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
@@ -52,10 +53,34 @@ h1 em{color:var(--cu2);font-style:italic}
 footer{background:var(--navy3);color:rgba(255,255,255,.6);font-size:14px;padding:36px 0;text-align:center}
 footer a{color:#fff;margin:0 10px}
 .fab{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:30}
+
+.sec{padding:56px 0 24px}.sec.short{background:var(--navy);color:#fff;padding:64px 0 72px}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.sec-h h2{font-family:'Playfair Display',serif;font-size:32px}.sec-h p{color:var(--mut);font-size:15px;max-width:560px;margin-top:6px}
+.short .sec-h p{color:rgba(255,255,255,.6)}.tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cu);font-weight:600;margin-bottom:6px}
+.short .tag{color:var(--cu2)}
+.grid{padding:0}
+.short .card{background:#22304f;color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.08)}.short .meta,.short .facts{color:rgba(255,255,255,.65)}
+.card{cursor:pointer}.facts{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--ink);font-weight:500;margin-top:4px}
+.count{position:absolute;bottom:12px;right:12px;background:rgba(16,25,45,.75);color:#fff;font-size:12px;padding:4px 9px;border-radius:999px}
+.row{justify-content:flex-end}button.btn{font-family:inherit}.btn-ghost{background:transparent;color:inherit;border:1px solid currentColor;opacity:.85}.btn-ghost:hover{opacity:1}
+.modal{position:fixed;inset:0;background:rgba(10,15,28,.75);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}.sheet{background:#fff;border-radius:20px;max-width:980px;width:100%;max-height:92vh;overflow:auto;position:relative}
+.gal{position:relative;background:#0b1220;aspect-ratio:16/10}.gal img{width:100%;height:100%;object-fit:contain;display:block}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.9);font-size:20px;cursor:pointer}
+.nav.p{left:12px}.nav.n{right:12px}.cap{position:absolute;left:14px;bottom:12px;color:#fff;font-size:13px;background:rgba(0,0,0,.45);padding:4px 10px;border-radius:999px}
+.x{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:#fff;font-size:22px;cursor:pointer}
+.thumbs{display:flex;gap:8px;padding:10px 14px;overflow-x:auto;background:#0b1220}.thumbs img{width:84px;height:60px;object-fit:cover;border-radius:6px;opacity:.55;cursor:pointer;flex:none}.thumbs img.on{opacity:1;outline:2px solid var(--cu2)}
+.det{padding:24px 28px 28px;display:grid;grid-template-columns:1.4fr 1fr;gap:28px}.det h3{font-family:'Playfair Display',serif;font-size:28px}
+.det .badge{position:static;box-shadow:none;border:1px solid #e3e6ec;margin:10px 0}.det p{line-height:1.65;color:#3b4660;margin-top:12px}
+.det h4{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:4px 0 10px}
+.ams{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.ams li{font-size:13.5px;background:#f2f4f7;padding:6px 11px;border-radius:999px}
+.det .btn-wa{margin-top:20px;width:100%;padding:14px}
+@media(max-width:760px){.det{grid-template-columns:1fr;padding:20px}.modal{padding:0}.sheet{border-radius:0;max-height:100vh;height:100%}.gal{aspect-ratio:4/3}}
 </style>
 </head>
 <body>
-<div class="preview">Preview only, not live. Availability from YallaPMS, last updated <span id="upd"></span> (Dubai time). Photos and copy for new units coming from Jayson.</div>
+<div class="preview">Preview only, not live. Availability from YallaPMS, updated <span id="upd"></span> (Dubai time).</div>
 <header><div class="wrap">
   <a class="logo" href="https://co-host.pro/home">Clifford <i>The Co Host</i></a>
   <nav>
@@ -71,53 +96,103 @@ footer a{color:#fff;margin:0 10px}
 <section class="hero"><div class="wrap">
   <div class="chip">★ Stay with Clifford</div>
   <h1>Our Properties. <em>Ready When You Are.</em></h1>
-  <p>Monthly and short-stay homes in Dubai and South Africa. See what's free now and what's rented and until when, then message me directly about the one you like.</p>
+  <p>Furnished homes across Dubai for monthly stays, plus short stays. See what's free and what's rented and until when, then message me directly about the one you like.</p>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
+    <button data-f="monthly">Monthly homes</button>
+    <button data-f="short">Short stays</button>
     <button data-f="available">Available now</button>
-    <button data-f="dubai">Dubai</button>
-    <button data-f="sa">South Africa</button>
   </div>
 </div></section>
 
-<main class="wrap"><div class="grid" id="grid"></div>
-<p class="note">Dates show when the current stay ends. Message me to book the next free dates.</p></main>
+<section class="sec" id="sec-monthly"><div class="wrap">
+  <div class="sec-h"><div><div class="tag">Monthly &amp; yearly</div><h2>Monthly homes</h2>
+  <p>Fully furnished and fully serviced, with all bills included. Monthly or yearly.</p></div></div>
+  <div class="grid" id="grid-monthly"></div></div></section>
 
-<footer>Clifford Landman · Airbnb Superhost · Dubai Co-Host<br><br>
-<a id="fwa" href="#">WhatsApp</a><a href="tel:+971586444285">Call +971 58 644 4285</a><a href="https://co-host.pro/home">co-host.pro</a></footer>
-<a class="fab" id="fab" href="#" aria-label="WhatsApp Clifford"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 .5C5.7.5.5 5.7.5 12c0 2 .5 4 1.5 5.7L.5 23.5l5.9-1.5c1.7.9 3.6 1.4 5.6 1.4 6.3 0 11.5-5.2 11.5-11.5S18.3.5 12 .5z"/></svg></a>
+<section class="sec short" id="sec-short"><div class="wrap">
+  <div class="sec-h"><div><div class="tag">Nightly &amp; weekly</div><h2>Short stays</h2>
+  <p>Holiday homes I host in Dubai. Message me with your dates.</p></div></div>
+  <div class="grid" id="grid-short"></div></div></section>
 
+<p class="note" style="padding-top:32px">“Rented until” shows when the current stay ends. Message me to book the next free dates.</p>
+
+<footer>Clifford Landman · Superhost · Dubai Co-Host<br><br>
+<a class="wa-link" href="#">WhatsApp <span class="wa-num"></span></a><a href="https://co-host.pro/home">co-host.pro</a></footer>
+<a class="fab wa-link" href="#" aria-label="WhatsApp Clifford"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 .5C5.7.5.5 5.7.5 12c0 2 .5 4 1.5 5.7L.5 23.5l5.9-1.5c1.7.9 3.6 1.4 5.6 1.4 6.3 0 11.5-5.2 11.5-11.5S18.3.5 12 .5z"/></svg></a>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="sheet">
+  <button class="x" id="mx" aria-label="Close">×</button>
+  <div class="gal"><img id="mimg" alt=""><button class="nav p" id="mp" aria-label="Previous photo">‹</button><button class="nav n" id="mn" aria-label="Next photo">›</button><span class="cap" id="mcap"></span></div>
+  <div class="thumbs" id="mth"></div>
+  <div class="det"><div><h3 id="mname"></h3><div class="meta" id="marea"></div><div id="mbadge"></div><div class="facts" id="mfacts"></div><p id="mdesc"></p></div>
+  <div><h4>Highlights</h4><ul class="ams" id="mams"></ul><div id="mterms"></div><a class="btn btn-wa" id="minq" target="_blank" rel="noopener">Inquire on WhatsApp</a></div></div>
+</div></div>
+
+<script src="site-config.js"></script>
 <script>
+const WA=window.COHOST_WHATSAPP;
 const fmt=d=>new Date(d+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let DATA,F='all';
-function wa(text){return `https://wa.me/${DATA.whatsapp}?text=${encodeURIComponent(text)}`}
-function badge(u){
-  if(u.status==='available')return '<span class="badge available"><span class="dot"></span>Available now</span>';
-  if(u.status==='rented')return `<span class="badge rented"><span class="dot"></span>${u.until?'Rented until '+fmt(u.until):'Rented long-term'}</span>`;
-  return '<span class="badge confirm"><span class="dot"></span>Ask for availability</span>';
+const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+let DATA,F='all',CUR=null,IDX=0;
+function badge(u,cls='badge'){
+  if(u.status==='available')return `<span class="${cls} available"><span class="dot"></span>Available now</span>`;
+  if(u.status==='rented')return `<span class="${cls} rented"><span class="dot"></span>${u.until?'Rented until '+fmt(u.until):'Rented'}</span>`;
+  return '';
 }
 function msg(u){
-  const s=u.status==='available'?'is it available?':u.status==='rented'&&u.until?`when is it free after ${fmt(u.until)}?`:'is it available?';
-  return `Hi Clifford, I'm interested in ${u.name} (${u.area.replace(/ · /g,', ')}). ${s[0].toUpperCase()+s.slice(1)}`;
+  const q=u.status==='rented'&&u.until?`When is it free after ${fmt(u.until)}?`:u.status==='rented'?'When will it be free next?':'Is it available?';
+  return `Hi Clifford, I'm interested in ${u.name} (${u.area.replace(/ · /g,', ')}). ${q}`;
+}
+const rank=u=>u.status==='available'?0:u.status==='unknown'?1:u.until?2:3;
+function card(u){
+  const p=u.photos[0];
+  return `<article class="card" data-id="${u.id}" tabindex="0">
+   <div class="ph" style="background-image:url('${esc(p.src)}-sm.webp')" role="img" aria-label="${esc(u.name)}: ${esc(p.alt)}">
+     ${badge(u)}${u.photos.length>1?`<span class="count">${u.photos.length} photos</span>`:''}</div>
+   <div class="body"><h3>${esc(u.name)}</h3><div class="meta">${esc(u.area)}</div>
+     <div class="facts">${u.facts.map(f=>`<span>${esc(f)}</span>`).join('')}</div>
+     <div class="row"><button class="btn btn-ghost" data-open="${u.id}">View details</button>
+     <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(msg(u))}">Inquire</a></div></div></article>`;
 }
 function render(){
-  const rank=u=>u.status==='available'?0:u.status==='rented'?(u.until?1:2):3;
-  const list=DATA.units.slice().sort((a,b)=>rank(a)-rank(b)||(a.until||'').localeCompare(b.until||'')).filter(u=>F==='all'||(F==='available'?u.status==='available':u.region===F));
-  document.getElementById('grid').innerHTML=list.map(u=>`
-   <article class="card">
-     ${u.photo?`<div class="ph" style="background-image:url('${esc(u.photo)}')">`:`<div class="ph empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>Photos coming soon`}
-       ${badge(u)}<span class="stay">${esc(u.stay)}</span></div>
-     <div class="body"><h3>${esc(u.name)}</h3><div class="meta">${esc(u.area)}</div>
-       <div class="row"><span class="beds">${esc(u.beds)}</span>
-       <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(msg(u))}">Inquire</a></div></div>
-   </article>`).join('')||'<p>No properties match.</p>';
+  for(const g of ['monthly','short']){
+    let list=DATA.units.filter(u=>u.group===g).sort((a,b)=>rank(a)-rank(b)||(a.until||'').localeCompare(b.until||''));
+    if(F==='available')list=list.filter(u=>u.status==='available');
+    const show=(F==='all'||F==='available'||F===g)&&list.length;
+    document.getElementById('sec-'+g).style.display=show?'':'none';
+    document.getElementById('grid-'+g).innerHTML=list.map(card).join('');
+  }
 }
-fetch('availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
-  DATA=d;document.getElementById('upd').textContent=d.updated.replace('T',' ');
-  const gen=wa("Hi Clifford, I'm looking for a place to stay. What do you have available?");
-  document.getElementById('fab').href=gen;document.getElementById('fwa').href=gen;render();});
+function show(i){IDX=(i+CUR.photos.length)%CUR.photos.length;const p=CUR.photos[IDX];
+  const im=document.getElementById('mimg');im.src=p.src+'.webp';im.alt=CUR.name+': '+p.alt;
+  document.getElementById('mcap').textContent=`${p.alt} · ${IDX+1}/${CUR.photos.length}`;
+  document.querySelectorAll('#mth img').forEach((t,j)=>t.classList.toggle('on',j===IDX));
+  const one=CUR.photos.length<2;mp.style.display=mn.style.display=one?'none':'';}
+function open(id){CUR=DATA.units.find(u=>u.id===id);if(!CUR)return;
+  mname.textContent=CUR.name;marea.textContent=CUR.area;mbadge.innerHTML=badge(CUR);
+  mfacts.innerHTML=CUR.facts.map(f=>`<span>${esc(f)}</span>`).join('');mdesc.textContent=CUR.description;
+  mams.innerHTML=CUR.amenities.map(a=>`<li>${esc(a)}</li>`).join('');
+  mterms.innerHTML=CUR.terms?`<h4 style="margin-top:18px">Terms</h4><ul class="ams">${CUR.terms.map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`:'';
+  minq.href=wa(msg(CUR));
+  mth.innerHTML=CUR.photos.length>1?CUR.photos.map((p,j)=>`<img src="${esc(p.src)}-sm.webp" alt="${esc(p.alt)}" data-i="${j}" loading="lazy">`).join(''):'';
+  mth.style.display=CUR.photos.length>1?'':'none';
+  show(0);modal.classList.add('open');document.body.style.overflow='hidden';history.replaceState(null,'','#'+id);}
+function close(){modal.classList.remove('open');document.body.style.overflow='';history.replaceState(null,'',location.pathname);}
+document.addEventListener('click',e=>{
+  if(e.target.closest('.btn-wa'))return;
+  const o=e.target.closest('[data-open]')||e.target.closest('.card');if(o){open(o.dataset.open||o.dataset.id);return;}
+  const t=e.target.closest('#mth img');if(t)show(+t.dataset.i);});
+mp.onclick=()=>show(IDX-1);mn.onclick=()=>show(IDX+1);mx.onclick=close;modal.onclick=e=>{if(e.target===modal)close();};
+document.addEventListener('keydown',e=>{if(!modal.classList.contains('open')){if(e.key==='Enter'&&e.target.classList.contains('card'))open(e.target.dataset.id);return;}
+  if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(IDX-1);if(e.key==='ArrowRight')show(IDX+1);});
 document.getElementById('filters').onclick=e=>{const b=e.target.closest('button');if(!b)return;F=b.dataset.f;
   document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));render();};
+const gen=wa("Hi Clifford, I'm looking for a place to stay in Dubai. What do you have available?");
+document.querySelectorAll('.wa-link').forEach(a=>{a.href=gen;a.target='_blank';a.rel='noopener'});
+document.querySelectorAll('.wa-num').forEach(s=>s.textContent='+'+WA.replace(/^(\d{3})(\d{2})(\d{3})(\d{4})$/,'$1 $2 $3 $4'));
+fetch('availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{DATA=d;upd.textContent=d.updated;render();
+  if(location.hash.length>1)open(location.hash.slice(1));});
 </script>
 </body></html>
