@@ -61,7 +61,8 @@ footer a{color:#fff;margin:0 10px}
 .short .tag{color:var(--cu2)}
 .grid{padding:0}
 .short .card{background:#22304f;color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.08)}.short .meta,.short .facts{color:rgba(255,255,255,.65)}
-.card{cursor:pointer}.facts{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--ink);font-weight:500;margin-top:4px}
+.card{cursor:pointer}.price{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--cu);margin-top:8px}.price small{font-family:Outfit,sans-serif;font-size:13px;font-weight:500;color:var(--mut)}
+.facts{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--ink);font-weight:500;margin-top:4px}
 .count{position:absolute;bottom:12px;right:12px;background:rgba(16,25,45,.75);color:#fff;font-size:12px;padding:4px 9px;border-radius:999px}
 .row{justify-content:flex-end}button.btn{font-family:inherit}.btn-ghost{background:transparent;color:inherit;border:1px solid currentColor;opacity:.85}.btn-ghost:hover{opacity:1}
 .modal{position:fixed;inset:0;background:rgba(10,15,28,.75);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
@@ -125,7 +126,7 @@ footer a{color:#fff;margin:0 10px}
   <button class="x" id="mx" aria-label="Close">×</button>
   <div class="gal"><img id="mimg" alt=""><button class="nav p" id="mp" aria-label="Previous photo">‹</button><button class="nav n" id="mn" aria-label="Next photo">›</button><span class="cap" id="mcap"></span></div>
   <div class="thumbs" id="mth"></div>
-  <div class="det"><div><h3 id="mname"></h3><div class="meta" id="marea"></div><div id="mbadge"></div><div class="facts" id="mfacts"></div><p id="mdesc"></p></div>
+  <div class="det"><div><h3 id="mname"></h3><div class="meta" id="marea"></div><div id="mbadge"></div><div class="facts" id="mfacts"></div><div class="price" id="mprice"></div><p id="mdesc"></p></div>
   <div><h4>Highlights</h4><ul class="ams" id="mams"></ul><div id="mterms"></div><a class="btn btn-wa" id="minq" target="_blank" rel="noopener">Inquire on WhatsApp</a></div></div>
 </div></div>
 
@@ -153,6 +154,7 @@ function card(u){
      ${badge(u)}${u.photos.length>1?`<span class="count">${u.photos.length} photos</span>`:''}</div>
    <div class="body"><h3>${esc(u.name)}</h3><div class="meta">${esc(u.area)}</div>
      <div class="facts">${u.facts.map(f=>`<span>${esc(f)}</span>`).join('')}</div>
+     ${u.price?`<div class="price">${esc(u.price)}</div>`:''}
      <div class="row"><button class="btn btn-ghost" data-open="${u.id}">View details</button>
      <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(msg(u))}">Inquire</a></div></div></article>`;
 }
@@ -172,7 +174,7 @@ function show(i){IDX=(i+CUR.photos.length)%CUR.photos.length;const p=CUR.photos[
   const one=CUR.photos.length<2;mp.style.display=mn.style.display=one?'none':'';}
 function open(id){CUR=DATA.units.find(u=>u.id===id);if(!CUR)return;
   mname.textContent=CUR.name;marea.textContent=CUR.area;mbadge.innerHTML=badge(CUR);
-  mfacts.innerHTML=CUR.facts.map(f=>`<span>${esc(f)}</span>`).join('');mdesc.textContent=CUR.description;
+  mfacts.innerHTML=CUR.facts.map(f=>`<span>${esc(f)}</span>`).join('');mdesc.textContent=CUR.description;mprice.textContent=CUR.price||'';
   mams.innerHTML=CUR.amenities.map(a=>`<li>${esc(a)}</li>`).join('');
   mterms.innerHTML=CUR.terms?`<h4 style="margin-top:18px">Terms</h4><ul class="ams">${CUR.terms.map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`:'';
   minq.href=wa(msg(CUR));

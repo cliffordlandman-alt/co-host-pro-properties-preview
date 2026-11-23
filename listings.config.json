@@ -1,5 +1,5 @@
 {
- "_note": "Public display data. NO prices, NO Airbnb links, nothing from the pack's 'Do not publish' section. Unknown facts are simply omitted. Hidden units are not published.",
+ "_note": "Public display data. Monthly prices shown only where set in \"price\" (Noor 1 withheld until confirmed); no short-stay prices, NO Airbnb links, nothing from the pack's 'Do not publish' section. Unknown facts are simply omitted. Hidden units are not published.",
  "units": [
   {
    "id": "noor-1",
@@ -22,7 +22,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -64,7 +66,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -79,7 +83,8 @@
      "src": "img/sunrise-bay-1406-serenity/08-private-beach",
      "alt": "Private beach"
     }
-   ]
+   ],
+   "price": "AED 20,000 / month per home"
   },
   {
    "id": "liva",
@@ -100,7 +105,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -119,7 +126,8 @@
      "src": "img/liva-town-square/04-building-podium-pool-aerial",
      "alt": "Podium pool"
     }
-   ]
+   ],
+   "price": "AED 7,500 / month"
   },
   {
    "id": "the-square-tower",
@@ -141,14 +149,17 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
      "src": "img/the-square-tower-jvc/01-studio-bed-kitchen-suitcase-cropped",
      "alt": "Studio with bed and kitchen"
     }
-   ]
+   ],
+   "price": "AED 6,500 / month"
   },
   {
    "id": "lofts-west",

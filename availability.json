@@ -1,5 +1,5 @@
 {
- "updated": "23 Nov 2026, 13:28",
+ "updated": "23 Nov 2026, 13:29",
  "units": [
   {
    "id": "noor-1",
@@ -21,7 +21,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -64,7 +66,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -80,6 +84,7 @@
      "alt": "Private beach"
     }
    ],
+   "price": "AED 20,000 / month per home",
    "status": "unknown",
    "until": null
   },
@@ -101,7 +106,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -121,6 +128,7 @@
      "alt": "Podium pool"
     }
    ],
+   "price": "AED 7,500 / month",
    "status": "unknown",
    "until": null
   },
@@ -143,7 +151,9 @@
    "terms": [
     "All bills included",
     "Fully serviced",
-    "Monthly or yearly"
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
    ],
    "photos": [
     {
@@ -151,6 +161,7 @@
      "alt": "Studio with bed and kitchen"
     }
    ],
+   "price": "AED 6,500 / month",
    "status": "unknown",
    "until": null
   },
