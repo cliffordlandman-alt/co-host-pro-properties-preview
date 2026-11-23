@@ -15,11 +15,9 @@ for u in cfg['units']:
         if not r['busy_until']:
             st = 'available'
         else:
-            far = (datetime.date.fromisoformat(r['busy_until']) - today).days > 330
-            if far and not r['is_booking']:
-                st = 'unknown'             # whole Airbnb calendar blocked: not a real end date
-            else:
-                st, until = 'rented', (None if far else r['busy_until'])
+            far = (datetime.date.fromisoformat(r['busy_until']) - today).days > 120
+            # Long stretch (blocks with unknown reasons) -> unavailable, no date. Otherwise: free from the end date.
+            st, until = ('unavailable', None) if far else ('from', r['busy_until'])
     s['status'], s['until'] = st, until
     out.append(s)
 json.dump({'updated': datetime.datetime.now().strftime('%d %b %Y, %H:%M'), 'units': out},

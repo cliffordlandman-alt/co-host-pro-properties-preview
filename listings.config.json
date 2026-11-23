@@ -1,5 +1,5 @@
 {
- "_note": "Public display data. Monthly prices shown only where set in \"price\" (Noor 1 withheld until confirmed); no short-stay prices, NO Airbnb links, nothing from the pack's 'Do not publish' section. Unknown facts are simply omitted. Hidden units are not published.",
+ "_note": "Public display data. Monthly prices only where set in 'price' (Noor 1 withheld until confirmed); no short-stay prices; no Airbnb links; nothing from the pack's 'Do not publish' section. Unknown facts are left out. Badges: available / from <date> / unavailable / none.",
  "units": [
   {
    "id": "noor-1",
@@ -43,7 +43,10 @@
      "src": "img/noor-1-midtown/04-building-community-pool-and-towers",
      "alt": "Community buildings and pool"
     }
-   ]
+   ],
+   "status_override": {
+    "status": "available"
+   }
   },
   {
    "id": "sunrise-bay-monthly",
@@ -127,7 +130,10 @@
      "alt": "Podium pool"
     }
    ],
-   "price": "AED 7,500 / month"
+   "price": "AED 7,500 / month",
+   "status_override": {
+    "status": "available"
+   }
   },
   {
    "id": "the-square-tower",
@@ -159,7 +165,10 @@
      "alt": "Studio with bed and kitchen"
     }
    ],
-   "price": "AED 6,500 / month"
+   "price": "AED 6,500 / month",
+   "status_override": {
+    "status": "available"
+   }
   },
   {
    "id": "lofts-west",
@@ -219,7 +228,10 @@
      "src": "img/lofts-west-603/08-building-podium-pool",
      "alt": "Podium pool"
     }
-   ]
+   ],
+   "status_override": {
+    "status": "unavailable"
+   }
   },
   {
    "id": "sea-view-1br",
@@ -407,10 +419,6 @@
    "id": "jvt-villa",
    "group": "short",
    "pms_id": 11,
-   "status_override": {
-    "status": "rented",
-    "until": null
-   },
    "name": "Modern JVT Villa",
    "area": "Jumeirah Village Triangle (JVT) · Dubai",
    "facts": [
@@ -467,7 +475,10 @@
      "src": "img/jvt-villa-14a/08-front-exterior",
      "alt": "Front of the villa"
     }
-   ]
+   ],
+   "status_override": {
+    "status": "unavailable"
+   }
   },
   {
    "id": "luxe-studio-arjan",
@@ -527,34 +538,117 @@
    ]
   },
   {
-   "id": "lakeside-3br-cape-town",
-   "pms_id": 1,
-   "hidden": true
-  },
-  {
-   "id": "green-lawn-house",
-   "pms_id": 2,
-   "hidden": true
-  },
-  {
-   "id": "grey-house",
-   "pms_id": 3,
-   "hidden": true
-  },
-  {
-   "id": "garden-retreat",
-   "pms_id": 4,
-   "hidden": true
-  },
-  {
-   "id": "boulevard-central-509",
-   "pms_id": 10,
-   "hidden": true
-  },
-  {
    "id": "sunrise-bay-1906",
    "pms_id": null,
    "hidden": true
+  },
+  {
+   "id": "downtown-luxe-retreat",
+   "group": "short",
+   "pms_id": 10,
+   "status_override": {
+    "status": "unavailable"
+   },
+   "name": "Downtown Luxe Retreat",
+   "area": "Boulevard Central · Downtown Dubai",
+   "facts": [
+    "2 bedrooms",
+    "2 baths"
+   ],
+   "description": "A furnished 2-bedroom apartment at Boulevard Central in Downtown Dubai, opposite Dubai Mall.",
+   "amenities": [
+    "Downtown location",
+    "Opposite Dubai Mall",
+    "Building pool"
+   ],
+   "photos": [
+    {
+     "src": "img/blvd-central/01",
+     "alt": "Building pool and towers"
+    }
+   ]
+  },
+  {
+   "id": "lakeside-3br",
+   "group": "short-sa",
+   "pms_id": 1,
+   "name": "Lakeside 3BR",
+   "area": "Cape Town · South Africa",
+   "facts": [
+    "3 bedrooms"
+   ],
+   "description": "A 3-bedroom lakeside home in Cape Town with mountain views and a patio BBQ area.",
+   "amenities": [
+    "Mountain views",
+    "Patio",
+    "BBQ area"
+   ],
+   "photos": [
+    {
+     "src": "img/lakeside-3br/01",
+     "alt": "Living area"
+    }
+   ]
+  },
+  {
+   "id": "green-lawn-house",
+   "group": "short-sa",
+   "pms_id": 2,
+   "name": "The Green Lawn House",
+   "area": "Gqeberha (Port Elizabeth) · South Africa",
+   "facts": [],
+   "description": "A home in Gqeberha (Port Elizabeth) with a green lawn and garden.",
+   "amenities": [
+    "Garden"
+   ],
+   "photos": [
+    {
+     "src": "img/green-lawn-house/01",
+     "alt": "Living room"
+    }
+   ]
+  },
+  {
+   "id": "grey-house",
+   "group": "short-sa",
+   "pms_id": 3,
+   "name": "The Grey House",
+   "area": "Mount Pleasant · Gqeberha · South Africa",
+   "facts": [
+    "2 bedrooms"
+   ],
+   "description": "A 2-bedroom home in Mount Pleasant, Gqeberha, with a bar and an open kitchen.",
+   "amenities": [
+    "Bar",
+    "Open kitchen"
+   ],
+   "photos": [
+    {
+     "src": "img/grey-house/01",
+     "alt": "Living area"
+    }
+   ]
+  },
+  {
+   "id": "garden-retreat",
+   "group": "short-sa",
+   "pms_id": 4,
+   "name": "Garden Retreat",
+   "area": "Gqeberha · South Africa",
+   "facts": [
+    "Suite"
+   ],
+   "description": "A cosy suite in Gqeberha with a private patio and a fire pit.",
+   "amenities": [
+    "Private patio",
+    "Fire pit"
+   ],
+   "photos": [
+    {
+     "src": "img/garden-retreat/01",
+     "alt": "Patio with fire pit"
+    }
+   ]
   }
  ]
 }

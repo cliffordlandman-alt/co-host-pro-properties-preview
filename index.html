@@ -97,7 +97,7 @@ footer a{color:#fff;margin:0 10px}
 <section class="hero"><div class="wrap">
   <div class="chip">★ Stay with Clifford</div>
   <h1>Our Properties. <em>Ready When You Are.</em></h1>
-  <p>Furnished homes across Dubai for monthly stays, plus short stays. See what's free and what's rented and until when, then message me directly about the one you like.</p>
+  <p>Furnished homes in Dubai for monthly stays, plus short stays in Dubai and South Africa. See what's free now and when the rest are free, then message me directly about the one you like.</p>
   <div class="filters" id="filters">
     <button class="on" data-f="all">All</button>
     <button data-f="monthly">Monthly homes</button>
@@ -114,9 +114,12 @@ footer a{color:#fff;margin:0 10px}
 <section class="sec short" id="sec-short"><div class="wrap">
   <div class="sec-h"><div><div class="tag">Nightly &amp; weekly</div><h2>Short stays</h2>
   <p>Holiday homes I host in Dubai. Message me with your dates.</p></div></div>
-  <div class="grid" id="grid-short"></div></div></section>
+  <div class="grid" id="grid-short"></div>
+  <div id="sec-short-sa"><div class="sec-h" style="margin-top:56px"><div><div class="tag">South Africa</div><h2>Short stays in South Africa</h2>
+  <p>Homes I host in Cape Town and Gqeberha.</p></div></div>
+  <div class="grid" id="grid-short-sa"></div></div></div></section>
 
-<p class="note" style="padding-top:32px">“Rented until” shows when the current stay ends. Message me to book the next free dates.</p>
+<p class="note" style="padding-top:32px">“Available from” shows the next date a home is free. Message me to check your dates.</p>
 
 <footer>Clifford Landman · Superhost · Dubai Co-Host<br><br>
 <a class="wa-link" href="#">WhatsApp <span class="wa-num"></span></a><a href="https://co-host.pro/home">co-host.pro</a></footer>
@@ -139,14 +142,15 @@ const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 let DATA,F='all',CUR=null,IDX=0;
 function badge(u,cls='badge'){
   if(u.status==='available')return `<span class="${cls} available"><span class="dot"></span>Available now</span>`;
-  if(u.status==='rented')return `<span class="${cls} rented"><span class="dot"></span>${u.until?'Rented until '+fmt(u.until):'Rented'}</span>`;
+  if(u.status==='from')return `<span class="${cls} rented"><span class="dot"></span>Available from ${fmt(u.until)}</span>`;
+  if(u.status==='unavailable')return `<span class="${cls} confirm"><span class="dot"></span>Currently unavailable – inquire</span>`;
   return '';
 }
 function msg(u){
-  const q=u.status==='rented'&&u.until?`When is it free after ${fmt(u.until)}?`:u.status==='rented'?'When will it be free next?':'Is it available?';
+  const q=u.status==='from'?`Is it available from ${fmt(u.until)}?`:u.status==='unavailable'?'When will it be available next?':'Is it available?';
   return `Hi Clifford, I'm interested in ${u.name} (${u.area.replace(/ · /g,', ')}). ${q}`;
 }
-const rank=u=>u.status==='available'?0:u.status==='unknown'?1:u.until?2:3;
+const rank=u=>({available:0,from:1,unknown:2,unavailable:3})[u.status]??2;
 function card(u){
   const p=u.photos[0];
   return `<article class="card" data-id="${u.id}" tabindex="0">
@@ -159,13 +163,15 @@ function card(u){
      <a class="btn btn-wa" target="_blank" rel="noopener" href="${wa(msg(u))}">Inquire</a></div></div></article>`;
 }
 function render(){
-  for(const g of ['monthly','short']){
+  for(const g of ['monthly','short','short-sa']){
     let list=DATA.units.filter(u=>u.group===g).sort((a,b)=>rank(a)-rank(b)||(a.until||'').localeCompare(b.until||''));
     if(F==='available')list=list.filter(u=>u.status==='available');
-    const show=(F==='all'||F==='available'||F===g)&&list.length;
+    const show=(F==='all'||F==='available'||F===g||(F==='short'&&g==='short-sa'))&&list.length;
     document.getElementById('sec-'+g).style.display=show?'':'none';
     document.getElementById('grid-'+g).innerHTML=list.map(card).join('');
   }
+  const sa=document.getElementById('sec-short-sa').style.display!=='none';
+  if(sa)document.getElementById('sec-short').style.display='';
 }
 function show(i){IDX=(i+CUR.photos.length)%CUR.photos.length;const p=CUR.photos[IDX];
   const im=document.getElementById('mimg');im.src=p.src+'.webp';im.alt=CUR.name+': '+p.alt;
