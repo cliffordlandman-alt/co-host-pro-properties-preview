@@ -1,4 +1,4 @@
-# co-host.pro Properties page: PREVIEW (not live)
+# co-host.pro Properties page: LIVE (approved by Clifford 24 Nov 2026)
 
 - `index.html`: Properties page in the live co-host.pro style. Two groups: **Monthly homes** and **Short stays** (dark band; drop the group by setting its units to `"hidden": true`). Click a card for photos, description and highlights.
 - `site-config.js`: the single WhatsApp number used by every button (`971586444285`, +971 58 644 4285).
