@@ -1,10 +1,10 @@
 {
- "updated": "23 Nov 2026, 13:31",
+ "updated": "24 Nov 2026, 09:40",
  "units": [
   {
    "id": "noor-1",
    "group": "monthly",
-   "name": "Noor 1",
+   "name": "Noor 1 · 1 Bedroom",
    "area": "Midtown · Dubai Production City",
    "facts": [
     "1 bedroom"
@@ -44,6 +44,45 @@
     }
    ],
    "status": "available",
+   "until": null
+  },
+  {
+   "id": "noor-1-802",
+   "group": "monthly",
+   "name": "Noor 1 · Unit 802",
+   "area": "Midtown · Dubai Production City",
+   "facts": [
+    "1 bedroom"
+   ],
+   "description": "A 1-bedroom apartment at Noor 1 by Deyaar in Midtown, Dubai Production City, with a private balcony and tall windows. The community has a landscaped courtyard and a swimming pool.",
+   "amenities": [
+    "Private balcony",
+    "Tall windows",
+    "Courtyard community",
+    "Swimming pool"
+   ],
+   "terms": [
+    "All bills included",
+    "Fully serviced",
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
+   ],
+   "photos": [
+    {
+     "src": "img/noor-1-midtown/02-building-courtyard-and-pool",
+     "alt": "Community courtyard and pool"
+    },
+    {
+     "src": "img/noor-1-midtown/03-building-pool",
+     "alt": "Community pool"
+    },
+    {
+     "src": "img/noor-1-midtown/04-building-community-pool-and-towers",
+     "alt": "Community buildings and pool"
+    }
+   ],
+   "status": "unavailable",
    "until": null
   },
   {
@@ -349,6 +388,68 @@
     }
    ],
    "status": "available",
+   "until": null
+  },
+  {
+   "id": "sunrise-bay-1906",
+   "group": "short",
+   "name": "Sunrise Bay 1906",
+   "area": "Emaar Beachfront · Dubai Harbour",
+   "facts": [
+    "1 bedroom",
+    "1 bath",
+    "Sleeps 4"
+   ],
+   "description": "A furnished 1-bedroom apartment, the same layout and style as Serenity by the Sea, at Sunrise Bay, Emaar Beachfront, with a private balcony looking over the sea, the marina and Atlantis. It has a queen bed and a sofa bed and sleeps up to four. Guests have the private beach, the infinity pool and the gym.",
+   "amenities": [
+    "Sea, marina and Atlantis views",
+    "Floor-to-ceiling windows",
+    "Private beach",
+    "Infinity pool",
+    "Gym",
+    "Free parking",
+    "Wi-Fi",
+    "Smart TV",
+    "Full kitchen",
+    "Bathtub",
+    "Washer",
+    "Room-darkening shades"
+   ],
+   "photos": [
+    {
+     "src": "img/sunrise-bay-1406-serenity/01-living-room",
+     "alt": "Living room"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/02-kitchen-and-dining",
+     "alt": "Kitchen and dining"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/03-bedroom-and-view",
+     "alt": "Bedroom and view"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/04-balcony-marina",
+     "alt": "Balcony with marina view"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/05-building-gym",
+     "alt": "Gym"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/06-infinity-pool",
+     "alt": "Infinity pool"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/07-building-lobby",
+     "alt": "Lobby"
+    },
+    {
+     "src": "img/sunrise-bay-1406-serenity/08-private-beach",
+     "alt": "Private beach"
+    }
+   ],
+   "status": "unknown",
    "until": null
   },
   {
