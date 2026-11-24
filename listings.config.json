@@ -399,7 +399,7 @@
   },
   {
    "id": "sunrise-bay-1906",
-   "group": "short",
+   "group": "monthly",
    "pms_id": null,
    "name": "Sunrise Bay 1906",
    "area": "Emaar Beachfront · Dubai Harbour",
@@ -457,7 +457,14 @@
      "alt": "Private beach"
     }
    ],
-   "price": "AED 20,000 / month"
+   "price": "AED 20,000 / month",
+   "terms": [
+    "All bills included",
+    "Fully serviced",
+    "Monthly or yearly",
+    "AED 500 refundable deposit",
+    "AED 150 contract fee"
+   ]
   },
   {
    "id": "jvc-penthouse",
