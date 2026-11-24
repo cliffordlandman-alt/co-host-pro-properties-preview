@@ -136,9 +136,11 @@ footer a{color:#fff;margin:0 10px}
   <div><h4>Highlights</h4><ul class="ams" id="mams"></ul><div id="mterms"></div><a class="btn btn-wa" id="minq" target="_blank" rel="noopener">Inquire on WhatsApp</a></div></div>
 </div></div>
 
+<!--PAGE-CONFIG-->
 <script src="site-config.js"></script>
 <script>
 const WA=window.COHOST_WHATSAPP;
+const BASE=window.COHOST_BASE||'';const ONLY=!!window.COHOST_ONLY_AVAILABLE;
 const fmt=d=>new Date(d+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
@@ -157,7 +159,7 @@ const rank=u=>({available:0,from:1,unknown:2,unavailable:3})[u.status]??2;
 function card(u){
   const p=u.photos[0];
   return `<article class="card" data-id="${u.id}" tabindex="0">
-   <div class="ph" style="background-image:url('${esc(p.src)}-sm.webp')" role="img" aria-label="${esc(u.name)}: ${esc(p.alt)}">
+   <div class="ph" style="background-image:url('${BASE}${esc(p.src)}-sm.webp')" role="img" aria-label="${esc(u.name)}: ${esc(p.alt)}">
      ${badge(u)}${u.photos.length>1?`<span class="count">${u.photos.length} photos</span>`:''}</div>
    <div class="body"><h3>${esc(u.name)}</h3><div class="meta">${esc(u.area)}</div>
      <div class="facts">${u.facts.map(f=>`<span>${esc(f)}</span>`).join('')}</div>
@@ -168,6 +170,7 @@ function card(u){
 function render(){
   for(const g of ['monthly','short','short-sa']){
     let list=DATA.units.filter(u=>u.group===g).sort((a,b)=>rank(a)-rank(b)||(a.until||'').localeCompare(b.until||''));
+    if(ONLY)list=list.filter(u=>u.status==='available'||u.status==='from');
     if(F==='available')list=list.filter(u=>u.status==='available');
     const show=(F==='all'||F==='available'||F===g||(F==='short'&&g==='short-sa'))&&list.length;
     document.getElementById('sec-'+g).style.display=show?'':'none';
@@ -177,7 +180,7 @@ function render(){
   if(sa)document.getElementById('sec-short').style.display='';
 }
 function show(i){IDX=(i+CUR.photos.length)%CUR.photos.length;const p=CUR.photos[IDX];
-  const im=document.getElementById('mimg');im.src=p.src+'.webp';im.alt=CUR.name+': '+p.alt;
+  const im=document.getElementById('mimg');im.src=BASE+p.src+'.webp';im.alt=CUR.name+': '+p.alt;
   document.getElementById('mcap').textContent=`${p.alt} · ${IDX+1}/${CUR.photos.length}`;
   document.querySelectorAll('#mth img').forEach((t,j)=>t.classList.toggle('on',j===IDX));
   const one=CUR.photos.length<2;mp.style.display=mn.style.display=one?'none':'';}
@@ -187,7 +190,7 @@ function open(id){CUR=DATA.units.find(u=>u.id===id);if(!CUR)return;
   mams.innerHTML=CUR.amenities.map(a=>`<li>${esc(a)}</li>`).join('');
   mterms.innerHTML=CUR.terms?`<h4 style="margin-top:18px">Terms</h4><ul class="ams">${CUR.terms.map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`:'';
   minq.href=wa(msg(CUR));
-  mth.innerHTML=CUR.photos.length>1?CUR.photos.map((p,j)=>`<img src="${esc(p.src)}-sm.webp" alt="${esc(p.alt)}" data-i="${j}" loading="lazy">`).join(''):'';
+  mth.innerHTML=CUR.photos.length>1?CUR.photos.map((p,j)=>`<img src="${BASE}${esc(p.src)}-sm.webp" alt="${esc(p.alt)}" data-i="${j}" loading="lazy">`).join(''):'';
   mth.style.display=CUR.photos.length>1?'':'none';
   show(0);modal.classList.add('open');document.body.style.overflow='hidden';history.replaceState(null,'','#'+id);}
 function close(){modal.classList.remove('open');document.body.style.overflow='';history.replaceState(null,'',location.pathname);}
@@ -203,7 +206,7 @@ document.getElementById('filters').onclick=e=>{const b=e.target.closest('button'
 const gen=wa("Hi Clifford, I'm looking for a place to stay in Dubai. What do you have available?");
 document.querySelectorAll('.wa-link').forEach(a=>{a.href=gen;a.target='_blank';a.rel='noopener'});
 document.querySelectorAll('.wa-num').forEach(s=>s.textContent='+'+WA.replace(/^(\d{3})(\d{2})(\d{3})(\d{4})$/,'$1 $2 $3 $4'));
-fetch('availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{DATA=d;upd.textContent=d.updated;render();
+fetch(BASE+'availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{DATA=d;upd.textContent=d.updated;render();
   if(location.hash.length>1)open(location.hash.slice(1));});
 </script>
 </body></html>
