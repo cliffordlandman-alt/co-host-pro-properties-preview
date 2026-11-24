@@ -1,5 +1,5 @@
 {
- "updated": "24 Nov 2026, 09:40",
+ "updated": "24 Nov 2026, 09:41",
  "units": [
   {
    "id": "noor-1",
@@ -449,6 +449,7 @@
      "alt": "Private beach"
     }
    ],
+   "price": "AED 20,000 / month",
    "status": "unknown",
    "until": null
   },
