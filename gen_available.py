@@ -1,6 +1,8 @@
 # Builds available/index.html from index.html: same look and data, but only "Available now" / "Available from <date>" cards.
 import re, os
 s = open('index.html').read()
+s = re.sub(r'<!--AUD-->.*?<!--/AUD-->', '', s, flags=re.S)
+s = re.sub(r'<!--AUDP-->.*?<!--/AUDP-->', '', s, flags=re.S)
 s = s.replace('<!--PAGE-CONFIG-->', '<script>window.COHOST_BASE="../";window.COHOST_ONLY_AVAILABLE=true;</script>')
 s = s.replace('<script src="site-config.js"></script>', '<script src="../site-config.js"></script>')
 s = s.replace('<title>Properties | Clifford The Co Host</title>', '<title>Available Now | Clifford The Co Host</title>')

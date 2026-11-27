@@ -82,6 +82,21 @@ footer a{color:#fff;margin:0 10px}
 .ams{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.ams li{font-size:13.5px;background:#f2f4f7;padding:6px 11px;border-radius:999px}
 .det .btn-wa{margin-top:20px;width:100%;padding:14px}
 @media(max-width:760px){.det{grid-template-columns:1fr;padding:20px}.modal{padding:0}.sheet{border-radius:0;max-height:100vh;height:100%}.gal{aspect-ratio:4/3}}
+
+.aud{margin:0 auto 26px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.aud-l{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.bubbles{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.bub{font:inherit;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:rgba(181,113,74,.14);border:1px solid rgba(201,138,98,.55);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:.2s}
+.bub:hover,.bub.on{background:var(--cu);border-color:var(--cu)}.bub span{font-size:17px;line-height:1}
+@media(max-width:520px){.bubbles{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:360px}.bub{justify-content:center;padding:11px 12px}}
+.sec,.aud-panel{scroll-margin-top:72px}
+.aud-panel{display:none;padding:56px 0;background:#fff;border-bottom:1px solid #e6e9ef}.aud-panel.open{display:block}
+.aud-panel h2{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:10px}.aud-panel .lead{color:var(--mut);font-size:17px;line-height:1.6;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:28px 0}
+.stat{background:var(--bg);border-radius:16px;padding:20px}.stat b{display:block;font-family:'Playfair Display',serif;font-size:34px;color:var(--cu)}.stat small{color:var(--mut);font-size:14px}
+.pts{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px;margin:8px 0 28px}
+.pts li{padding-left:26px;position:relative;line-height:1.5;color:#3b4660}.pts li:before{content:"✓";position:absolute;left:0;color:var(--cu);font-weight:700}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}.btn-line{border:1px solid var(--navy);color:var(--navy);background:#fff}
 </style>
 </head>
 <body>
@@ -98,6 +113,15 @@ footer a{color:#fff;margin:0 10px}
 </div></header>
 
 <section class="hero"><div class="wrap">
+  <!--AUD-->
+  <div class="aud"><div class="aud-l">I'm a…</div>
+  <div class="bubbles" id="bubbles">
+    <a class="bub" href="available/" data-a="agent"><span>🤝</span>Agent</a>
+    <button class="bub" data-a="owners"><span>🔑</span>Owner</button>
+    <button class="bub" data-a="investors"><span>📈</span>Investor</button>
+    <button class="bub" data-a="browse"><span>🐱</span>Curious cat</button>
+  </div></div>
+  <!--/AUD-->
   <div class="chip">★ Stay with Clifford</div>
   <h1>Our Properties. <em>Ready When You Are.</em></h1>
   <p>Furnished homes in Dubai for monthly stays, plus short stays in Dubai and South Africa. See what's free now and when the rest are free, then message me directly about the one you like.</p>
@@ -109,6 +133,32 @@ footer a{color:#fff;margin:0 10px}
   </div>
 </div></section>
 
+<!--AUDP-->
+<section class="aud-panel" id="owners"><div class="wrap">
+  <div class="tag">For property owners</div><h2>Your property, professionally hosted.</h2>
+  <p class="lead">Hands-on Airbnb and holiday home management across Dubai. You deal directly with me, from furnishing and onboarding to pricing, guest communication, cleaning and reporting.</p>
+  <ul class="pts" style="margin-top:24px">
+    <li>Your listing stays yours, and payouts go directly to you</li><li>No long-term contracts</li>
+    <li>Dynamic pricing and occupancy management</li><li>Guest messages, check-ins, cleaning, linen and maintenance handled</li>
+    <li>Turnkey furnishing packages to get your home guest-ready</li><li>Clear, transparent reporting</li>
+  </ul>
+  <div class="ctas"><a class="btn btn-cu" href="https://co-host.pro/contact">Get Started</a>
+  <a class="btn btn-line" href="https://co-host.pro/packages">See packages &amp; pricing</a>
+  <a class="btn btn-wa wa-owner" href="#" target="_blank" rel="noopener">WhatsApp Clifford</a></div>
+</div></section>
+<section class="aud-panel" id="investors"><div class="wrap">
+  <div class="tag">For investors</div><h2>A managed portfolio across Dubai and South Africa.</h2>
+  <p class="lead">I run a mix of monthly and short-stay homes, so each property earns from the stay type that suits it. Every home on this page is run hands-on by me, day to day.</p>
+  <div class="stats" id="istats"></div>
+  <ul class="pts">
+    <li>Fully managed: setup, furnishing, listing, pricing, guests and upkeep</li><li>Monthly lets and short stays, switched to suit the market</li>
+    <li>Prime Dubai areas: Downtown, Dubai Harbour, JVC, JVT, Arjan, Town Square, Dubai Production City</li><li>South Africa homes in Cape Town and Gqeberha</li>
+    <li>Owner keeps the listing and receives payouts directly</li><li>Superhost-standard guest experience</li>
+  </ul>
+  <div class="ctas"><a class="btn btn-wa wa-investor" href="#" target="_blank" rel="noopener">Talk to Clifford on WhatsApp</a>
+  <a class="btn btn-line" href="#sec-monthly" data-a="browse">Browse the portfolio</a></div>
+</div></section>
+<!--/AUDP-->
 <section class="sec" id="sec-monthly"><div class="wrap">
   <div class="sec-h"><div><div class="tag">Monthly &amp; yearly</div><h2>Monthly homes</h2>
   <p>Fully furnished and fully serviced, with all bills included. Monthly or yearly.</p></div></div>
@@ -201,12 +251,28 @@ document.addEventListener('click',e=>{
 mp.onclick=()=>show(IDX-1);mn.onclick=()=>show(IDX+1);mx.onclick=close;modal.onclick=e=>{if(e.target===modal)close();};
 document.addEventListener('keydown',e=>{if(!modal.classList.contains('open')){if(e.key==='Enter'&&e.target.classList.contains('card'))open(e.target.dataset.id);return;}
   if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(IDX-1);if(e.key==='ArrowRight')show(IDX+1);});
+function aud(a){
+  document.querySelectorAll('.aud-panel').forEach(p=>p.classList.toggle('open',p.id===a));
+  document.querySelectorAll('.bub').forEach(b=>b.classList.toggle('on',b.dataset.a===a));
+  const t=a==='browse'?document.getElementById('sec-monthly'):document.getElementById(a);
+  if(a==='browse'){F='all';document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));if(DATA)render();}
+  if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  if(a!=='browse')history.replaceState(null,'','#'+a);
+}
+const bubs=document.getElementById('bubbles');
+if(bubs)document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.dataset.a==='agent')return;e.preventDefault();aud(b.dataset.a);},true);
+function istats(){const el=document.getElementById('istats');if(!el||!DATA)return;const u=DATA.units.filter(x=>x.id!=='sunrise-bay-monthly'); // generic ad card overlaps the individual Sunrise Bay units
+  const dxb=u.filter(x=>x.group!=='short-sa').length,sa=u.length-dxb,mo=u.filter(x=>x.group==='monthly').length;
+  el.innerHTML=[[u.length,'homes managed'],[dxb,'in Dubai'],[sa,'in South Africa'],[mo,'monthly homes'],[u.length-mo,'short-stay homes']].map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');}
 document.getElementById('filters').onclick=e=>{const b=e.target.closest('button');if(!b)return;F=b.dataset.f;
   document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));render();};
 const gen=wa("Hi Clifford, I'm looking for a place to stay in Dubai. What do you have available?");
+document.querySelectorAll('.wa-owner').forEach(a=>a.href=wa("Hi Clifford, I own a property in Dubai and I'm interested in your co-hosting / management service."));
+document.querySelectorAll('.wa-investor').forEach(a=>a.href=wa("Hi Clifford, I'm an investor and would like to know more about your managed portfolio."));
 document.querySelectorAll('.wa-link').forEach(a=>{a.href=gen;a.target='_blank';a.rel='noopener'});
 document.querySelectorAll('.wa-num').forEach(s=>s.textContent='+'+WA.replace(/^(\d{3})(\d{2})(\d{3})(\d{4})$/,'$1 $2 $3 $4'));
 fetch(BASE+'availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{DATA=d;upd.textContent=d.updated;render();
-  if(location.hash.length>1)open(location.hash.slice(1));});
+  istats();const h=location.hash.slice(1);
+  if(h==='owners'||h==='investors')aud(h);else if(h.length)open(h);});
 </script>
 </body></html>

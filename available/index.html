@@ -82,6 +82,21 @@ footer a{color:#fff;margin:0 10px}
 .ams{list-style:none;display:flex;flex-wrap:wrap;gap:8px}.ams li{font-size:13.5px;background:#f2f4f7;padding:6px 11px;border-radius:999px}
 .det .btn-wa{margin-top:20px;width:100%;padding:14px}
 @media(max-width:760px){.det{grid-template-columns:1fr;padding:20px}.modal{padding:0}.sheet{border-radius:0;max-height:100vh;height:100%}.gal{aspect-ratio:4/3}}
+
+.aud{margin:0 auto 26px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.aud-l{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.bubbles{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.bub{font:inherit;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;background:rgba(181,113,74,.14);border:1px solid rgba(201,138,98,.55);color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:.2s}
+.bub:hover,.bub.on{background:var(--cu);border-color:var(--cu)}.bub span{font-size:17px;line-height:1}
+@media(max-width:520px){.bubbles{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:360px}.bub{justify-content:center;padding:11px 12px}}
+.sec,.aud-panel{scroll-margin-top:72px}
+.aud-panel{display:none;padding:56px 0;background:#fff;border-bottom:1px solid #e6e9ef}.aud-panel.open{display:block}
+.aud-panel h2{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:10px}.aud-panel .lead{color:var(--mut);font-size:17px;line-height:1.6;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin:28px 0}
+.stat{background:var(--bg);border-radius:16px;padding:20px}.stat b{display:block;font-family:'Playfair Display',serif;font-size:34px;color:var(--cu)}.stat small{color:var(--mut);font-size:14px}
+.pts{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px;margin:8px 0 28px}
+.pts li{padding-left:26px;position:relative;line-height:1.5;color:#3b4660}.pts li:before{content:"✓";position:absolute;left:0;color:var(--cu);font-weight:700}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}.btn-line{border:1px solid var(--navy);color:var(--navy);background:#fff}
 </style>
 </head>
 <body>
@@ -98,6 +113,7 @@ footer a{color:#fff;margin:0 10px}
 </div></header>
 
 <section class="hero"><div class="wrap">
+  
   <div class="chip">★ Stay with Clifford</div>
   <h1>Available Now. <em>Ready When You Are.</em></h1>
   <p>Furnished homes that are free now or coming free soon, in Dubai and South Africa. This list updates automatically. Message me on WhatsApp about any home.</p>
@@ -108,6 +124,7 @@ footer a{color:#fff;margin:0 10px}
     <button data-f="available">Free today</button>
   </div>
 </div></section>
+
 
 <section class="sec" id="sec-monthly"><div class="wrap">
   <div class="sec-h"><div><div class="tag">Monthly &amp; yearly</div><h2>Monthly homes</h2>
@@ -201,12 +218,28 @@ document.addEventListener('click',e=>{
 mp.onclick=()=>show(IDX-1);mn.onclick=()=>show(IDX+1);mx.onclick=close;modal.onclick=e=>{if(e.target===modal)close();};
 document.addEventListener('keydown',e=>{if(!modal.classList.contains('open')){if(e.key==='Enter'&&e.target.classList.contains('card'))open(e.target.dataset.id);return;}
   if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(IDX-1);if(e.key==='ArrowRight')show(IDX+1);});
+function aud(a){
+  document.querySelectorAll('.aud-panel').forEach(p=>p.classList.toggle('open',p.id===a));
+  document.querySelectorAll('.bub').forEach(b=>b.classList.toggle('on',b.dataset.a===a));
+  const t=a==='browse'?document.getElementById('sec-monthly'):document.getElementById(a);
+  if(a==='browse'){F='all';document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));if(DATA)render();}
+  if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  if(a!=='browse')history.replaceState(null,'','#'+a);
+}
+const bubs=document.getElementById('bubbles');
+if(bubs)document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.dataset.a==='agent')return;e.preventDefault();aud(b.dataset.a);},true);
+function istats(){const el=document.getElementById('istats');if(!el||!DATA)return;const u=DATA.units.filter(x=>x.id!=='sunrise-bay-monthly'); // generic ad card overlaps the individual Sunrise Bay units
+  const dxb=u.filter(x=>x.group!=='short-sa').length,sa=u.length-dxb,mo=u.filter(x=>x.group==='monthly').length;
+  el.innerHTML=[[u.length,'homes managed'],[dxb,'in Dubai'],[sa,'in South Africa'],[mo,'monthly homes'],[u.length-mo,'short-stay homes']].map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');}
 document.getElementById('filters').onclick=e=>{const b=e.target.closest('button');if(!b)return;F=b.dataset.f;
   document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));render();};
 const gen=wa("Hi Clifford, I'm looking for a place to stay in Dubai. What do you have available?");
+document.querySelectorAll('.wa-owner').forEach(a=>a.href=wa("Hi Clifford, I own a property in Dubai and I'm interested in your co-hosting / management service."));
+document.querySelectorAll('.wa-investor').forEach(a=>a.href=wa("Hi Clifford, I'm an investor and would like to know more about your managed portfolio."));
 document.querySelectorAll('.wa-link').forEach(a=>{a.href=gen;a.target='_blank';a.rel='noopener'});
 document.querySelectorAll('.wa-num').forEach(s=>s.textContent='+'+WA.replace(/^(\d{3})(\d{2})(\d{3})(\d{4})$/,'$1 $2 $3 $4'));
 fetch(BASE+'availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{DATA=d;upd.textContent=d.updated;render();
-  if(location.hash.length>1)open(location.hash.slice(1));});
+  istats();const h=location.hash.slice(1);
+  if(h==='owners'||h==='investors')aud(h);else if(h.length)open(h);});
 </script>
 </body></html>
