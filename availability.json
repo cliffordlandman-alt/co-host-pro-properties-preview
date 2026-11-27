@@ -1,5 +1,5 @@
 {
- "updated": "24 Nov 2026, 23:09",
+ "updated": "27 Nov 2026, 08:03",
  "units": [
   {
    "id": "noor-1",
@@ -704,8 +704,8 @@
      "alt": "Living room"
     }
    ],
-   "status": "available",
-   "until": null
+   "status": "from",
+   "until": "2026-11-29"
   },
   {
    "id": "grey-house",
