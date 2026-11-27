@@ -1,5 +1,20 @@
 {
- "updated": "27 Nov 2026, 08:03",
+ "updated": "27 Nov 2026, 18:55",
+ "stats": {
+  "homes": 16,
+  "dubai": 12,
+  "south_africa": 4,
+  "monthly": 5,
+  "short": 11,
+  "available_now": 4,
+  "available_soon": 5,
+  "airbnb_live_listings": 10,
+  "airbnb_reviews": 31,
+  "airbnb_rating": 4.97,
+  "airbnb_superhost": true,
+  "airbnb_profile": "https://www.airbnb.ae/users/profile/1470016653640626482",
+  "airbnb_checked": "27 Nov 2026, 18:55"
+ },
  "units": [
   {
    "id": "noor-1",

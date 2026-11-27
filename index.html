@@ -97,6 +97,13 @@ footer a{color:#fff;margin:0 10px}
 .pts{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 28px;margin:8px 0 28px}
 .pts li{padding-left:26px;position:relative;line-height:1.5;color:#3b4660}.pts li:before{content:"✓";position:absolute;left:0;color:var(--cu);font-weight:700}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}.btn-line{border:1px solid var(--navy);color:var(--navy);background:#fff}
+
+.prof{display:inline-flex;align-items:center;gap:16px;text-align:left;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:14px 22px 14px 14px;margin:0 auto 22px;max-width:640px}
+.prof img{width:72px;height:72px;border-radius:50%;object-fit:cover;background:#fff;flex:none;transform:scale(1)}
+.prof b{font-family:'Playfair Display',serif;font-size:20px;color:#fff;display:block}
+.prof .ln{font-size:14px;color:rgba(255,255,255,.75);margin-top:3px}.prof .ln i{font-style:normal;color:var(--cu2);font-weight:600}
+.prof a{display:inline-block;margin-top:7px;font-size:13.5px;font-weight:600;color:var(--cu2);border-bottom:1px solid rgba(201,138,98,.5)}
+@media(max-width:520px){.prof{gap:12px;padding:12px 14px 12px 12px;border-radius:18px}.prof img{width:60px;height:60px}.prof b{font-size:18px}}
 </style>
 </head>
 <body>
@@ -114,6 +121,9 @@ footer a{color:#fff;margin:0 10px}
 
 <section class="hero"><div class="wrap">
   <!--AUD-->
+  <div class="prof" id="prof"><img src="img/clifford.webp" alt="Clifford Landman">
+    <div><b>Clifford Landman</b><div class="ln" id="prof-l1">Superhost · Dubai Co-Host</div><div class="ln" id="prof-l2"></div>
+    <a id="prof-ab" href="https://www.airbnb.ae/users/profile/1470016653640626482" target="_blank" rel="noopener">View my Airbnb profile ↗</a></div></div>
   <div class="aud"><div class="aud-l">I'm a…</div>
   <div class="bubbles" id="bubbles">
     <a class="bub" href="available/" data-a="agent"><span>🤝</span>Agent</a>
@@ -261,9 +271,14 @@ function aud(a){
 }
 const bubs=document.getElementById('bubbles');
 if(bubs)document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b||b.dataset.a==='agent')return;e.preventDefault();aud(b.dataset.a);},true);
-function istats(){const el=document.getElementById('istats');if(!el||!DATA)return;const u=DATA.units.filter(x=>x.id!=='sunrise-bay-monthly'); // generic ad card overlaps the individual Sunrise Bay units
-  const dxb=u.filter(x=>x.group!=='short-sa').length,sa=u.length-dxb,mo=u.filter(x=>x.group==='monthly').length;
-  el.innerHTML=[[u.length,'homes managed'],[dxb,'in Dubai'],[sa,'in South Africa'],[mo,'monthly homes'],[u.length-mo,'short-stay homes']].map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');}
+function istats(){if(!DATA||!DATA.stats)return;const S=DATA.stats;
+  const el=document.getElementById('istats');
+  if(el)el.innerHTML=[[S.homes,'homes managed'],[S.dubai,'in Dubai'],[S.south_africa,'in South Africa'],[S.monthly,'monthly homes'],[S.short,'short-stay homes'],[S.available_now+S.available_soon,'free now or soon']]
+    .map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');
+  const l1=document.getElementById('prof-l1'),l2=document.getElementById('prof-l2'),ab=document.getElementById('prof-ab');
+  if(l1&&S.airbnb_reviews)l1.innerHTML=`${S.airbnb_superhost?'Airbnb Superhost · ':''}<i>★ ${S.airbnb_rating}</i> · ${S.airbnb_reviews} guest reviews`;
+  if(l2)l2.textContent=`${S.homes} homes · ${S.dubai} in Dubai · ${S.south_africa} in South Africa · ${S.available_now+S.available_soon} free now or soon`;
+  if(ab&&S.airbnb_profile)ab.href=S.airbnb_profile;}
 document.getElementById('filters').onclick=e=>{const b=e.target.closest('button');if(!b)return;F=b.dataset.f;
   document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));render();};
 const gen=wa("Hi Clifford, I'm looking for a place to stay in Dubai. What do you have available?");
