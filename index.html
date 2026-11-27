@@ -100,7 +100,7 @@ footer a{color:#fff;margin:0 10px}
 @media(max-width:520px){.pchip .t{display:none}.pchip{padding:3px}.pchip .dot{display:none}}
 .pm{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(8,12,24,0);backdrop-filter:blur(0);-webkit-backdrop-filter:blur(0);visibility:hidden;transition:background .35s,backdrop-filter .35s,visibility 0s .35s}
 .pm.open{visibility:visible;background:rgba(8,12,24,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .35s,backdrop-filter .35s}
-.pcard{position:relative;width:100%;max-width:430px;border-radius:28px;overflow:hidden;color:#fff;text-align:center;
+.pcard{position:relative;width:100%;max-width:430px;max-height:94vh;overflow-y:auto;border-radius:28px;overflow:hidden;color:#fff;text-align:center;
  background:radial-gradient(120% 70% at 50% 0%,#2a3a62 0%,#1b2744 55%,#121a30 100%);border:1px solid rgba(255,255,255,.1);
  box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.08);transform:translateY(24px) scale(.96);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .35s}
 .pm.open .pcard{transform:none;opacity:1}
@@ -129,7 +129,21 @@ footer a{color:#fff;margin:0 10px}
 .bub:hover,.bub:focus-visible{transform:translateY(-2px);background:linear-gradient(180deg,#c48359,#a8653f);border-color:#c98a62;box-shadow:0 10px 24px rgba(181,113,74,.35);outline:none}
 .bub:hover svg,.bub:focus-visible svg{stroke:#fff}
 @media(max-width:520px){.pm{padding:0;align-items:flex-end}.pcard{max-width:none;border-radius:26px 26px 0 0;transform:translateY(100%)}.pin{padding:30px 22px 20px}.pav{width:88px;height:88px}.pname{font-size:24px}.pfoot{padding:18px 16px calc(20px + env(safe-area-inset-bottom))}}
-@media(prefers-reduced-motion:reduce){.pm,.pcard,.bub{transition:none}}
+/* reviews carousel */
+.prv{position:relative;margin:16px 0 4px;padding:16px 18px 14px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(201,138,98,.22);overflow:hidden;text-align:left}
+.prv:before{content:"\201D";position:absolute;bottom:-46px;right:10px;font-family:'Playfair Display',serif;font-size:96px;line-height:1;color:rgba(201,138,98,.16);pointer-events:none}
+.prv-h{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.prv-h span:last-child{letter-spacing:.04em;text-transform:none}
+.prv-vp{overflow:hidden;touch-action:pan-y}.prv-tr{display:flex;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.prv-s{flex:0 0 100%;padding-right:4px}
+.prv-q{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.92);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.55em*3)}
+.prv-a{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:rgba(255,255,255,.65)}
+.prv-a b{color:#fff;font-weight:600}.prv-a .st{color:#f3c58f;letter-spacing:1px;font-size:12px}
+.prv-bar{height:2px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:12px;overflow:hidden}.prv-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cu),var(--cu2))}
+.prv.run .prv-bar i{animation:prvfill var(--prv-d,5s) linear forwards}.prv.paused .prv-bar i{animation-play-state:paused}
+@keyframes prvfill{to{width:100%}}
+@media(max-width:520px){.pcard{max-height:94vh;overflow-y:auto}.pin{padding:26px 18px 16px}.pav{width:76px;height:76px;margin-bottom:10px}.pname{font-size:22px}.pstats{gap:6px;margin-top:14px}.pstats div{padding:9px 4px}.pstats b{font-size:20px}.pstats small{font-size:11.5px;line-height:1.25;display:block}.prv{padding:14px 14px 12px}.prv-q{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.pm,.pcard,.bub,.prv-tr{transition:none}.prv.run .prv-bar i{animation:none}}
 </style>
 </head>
 <body>
@@ -213,6 +227,11 @@ footer a{color:#fff;margin:0 10px}
     <div class="psub" id="prof-l1"><span class="psh">★ Superhost</span>Dubai Co-Host</div>
     <div class="pstats" id="pstats"></div>
     <div class="pline" id="prof-l2"></div>
+    <div class="prv" id="prv" hidden aria-roledescription="carousel" aria-label="Guest reviews from Airbnb">
+      <div class="prv-h"><span>Guest reviews</span><span id="prv-n"></span></div>
+      <div class="prv-vp"><div class="prv-tr" id="prv-tr" aria-live="off"></div></div>
+      <div class="prv-bar"><i id="prv-bar"></i></div>
+    </div>
     <a class="pab" id="prof-ab" href="https://www.airbnb.ae/users/profile/1470016653640626482" target="_blank" rel="noopener">View my Airbnb profile <span aria-hidden="true">↗</span></a>
   </div>
   <div class="pfoot"><div class="plab">I'm a…</div>
@@ -314,11 +333,23 @@ function istats(){if(!DATA||!DATA.stats)return;const S=DATA.stats;
     .map(([n,l])=>`<div class="stat"><b>${n}</b><small>${l}</small></div>`).join('');
   const l1=document.getElementById('prof-l1'),l2=document.getElementById('prof-l2'),ab=document.getElementById('prof-ab'),ps=document.getElementById('pstats');
   if(l1&&S.airbnb_reviews)l1.innerHTML=`${S.airbnb_superhost?'<span class="psh">★ Superhost</span>':''}<span><i>★ ${S.airbnb_rating}</i> · ${S.airbnb_reviews} reviews</span>`;
-  if(ps)ps.innerHTML=[[S.homes,'homes'],[S.dubai,'in Dubai'],[S.south_africa,'in S. Africa']].map(([n,l])=>`<div><b>${n}</b><small>${l}</small></div>`).join('');
+  if(ps)ps.innerHTML=[[S.homes,'homes'],[S.dubai,'in Dubai'],[S.south_africa,'in South Africa']].map(([n,l])=>`<div><b>${n}</b><small>${l}</small></div>`).join('');
   if(l2)l2.textContent=`${S.available_now} available now · ${S.available_soon} coming free soon`;
   if(ab&&S.airbnb_profile)ab.href=S.airbnb_profile;}
 const PM=document.getElementById('pm');
-function popen(){if(!PM)return;PM.classList.add('open');document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('pclose').focus({preventScroll:true}),350);}
+let PRV={i:0,n:0,t:null,paused:false};const PRV_MS=5200;
+function reviewsInit(){const box=document.getElementById('prv');if(!box||!DATA||!DATA.reviews||!DATA.reviews.length)return;
+  const R=DATA.reviews;PRV.n=R.length;box.hidden=false;box.style.setProperty('--prv-d',PRV_MS+'ms');
+  document.getElementById('prv-tr').innerHTML=R.map((x,i)=>`<div class="prv-s" role="group" aria-label="Review ${i+1} of ${R.length}"><div class="prv-q">${esc(x.text)}</div><div class="prv-a"><span class="st" aria-label="${x.rating} out of 5">${'★'.repeat(x.rating||5)}</span><b>${esc(x.name)}</b><span>· ${esc(x.date)}</span></div></div>`).join('');
+  const go=k=>{PRV.i=(k+PRV.n)%PRV.n;document.getElementById('prv-tr').style.transform=`translateX(-${PRV.i*100}%)`;document.getElementById('prv-n').textContent=`${PRV.i+1} / ${PRV.n}`;
+    const bar=document.getElementById('prv-bar');box.classList.remove('run');void bar.offsetWidth;box.classList.add('run');};
+  const tick=()=>{clearTimeout(PRV.t);PRV.t=setTimeout(()=>{if(!PRV.paused&&PM.classList.contains('open'))go(PRV.i+1);tick();},PRV_MS);};
+  const pause=v=>{PRV.paused=v;box.classList.toggle('paused',v);if(!v){go(PRV.i);tick();}};
+  box.addEventListener('mouseenter',()=>pause(true));box.addEventListener('mouseleave',()=>pause(false));
+  let x0=null;box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;pause(true);},{passive:true});
+  box.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-(x0??0);if(Math.abs(dx)>40)go(PRV.i+(dx<0?1:-1));x0=null;setTimeout(()=>pause(false),2500);},{passive:true});
+  PRV.go=go;go(0);tick();}
+function popen(){if(!PM)return;PM.classList.add('open');if(PRV.go)PRV.go(PRV.i);document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('pclose').focus({preventScroll:true}),350);}
 function pclose(){if(!PM||!PM.classList.contains('open'))return;PM.classList.remove('open');document.body.style.overflow='';try{localStorage.setItem('cohost_prof_seen','1')}catch(e){}}
 if(PM){document.getElementById('pclose').onclick=pclose;PM.addEventListener('click',e=>{if(e.target===PM)pclose();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')pclose();});
@@ -332,7 +363,7 @@ document.querySelectorAll('.wa-investor').forEach(a=>a.href=wa("Hi Clifford, I'm
 document.querySelectorAll('.wa-link').forEach(a=>{a.href=gen;a.target='_blank';a.rel='noopener'});
 document.querySelectorAll('.wa-num').forEach(s=>s.textContent='+'+WA.replace(/^(\d{3})(\d{2})(\d{3})(\d{4})$/,'$1 $2 $3 $4'));
 fetch(BASE+'availability.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{DATA=d;upd.textContent=d.updated;render();
-  istats();const h=location.hash.slice(1);
+  istats();reviewsInit();const h=location.hash.slice(1);
   let seen=false;try{seen=localStorage.getItem('cohost_prof_seen')==='1'}catch(e){}
   if(PM&&!h&&!seen)setTimeout(popen,700);
   if(h==='owners'||h==='investors')aud(h);else if(h.length)open(h);});

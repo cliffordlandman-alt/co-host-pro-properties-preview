@@ -28,10 +28,12 @@ stats = {'homes': len(units_pub),
          'short': sum(1 for s in units_pub if s['group'] != 'monthly'),
          'available_now': sum(1 for s in units_pub if s['status'] == 'available'),
          'available_soon': sum(1 for s in units_pub if s['status'] == 'from')}
+reviews = []
 try:
     ab = json.load(open('airbnb_profile.json'))
     stats.update(airbnb_live_listings=ab['live_listings'], airbnb_reviews=ab['reviews'], airbnb_rating=ab['rating'],
                  airbnb_superhost=ab['superhost'], airbnb_profile=ab['profile_url'], airbnb_checked=ab['checked'])
+    reviews = ab.get('guest_reviews', [])
     live = set(ab['listing_ids'])
     for r in pms.values():
         if r.get('pms_status') == 'active' and r.get('airbnb_listing_id') and r['airbnb_listing_id'] not in live:
@@ -40,7 +42,7 @@ try:
     for i in live - known:
         print('NOTE: Airbnb listing', i, 'is not in YallaPMS - add it to listings.config.json', file=sys.stderr)
 except FileNotFoundError:
-    pass
-json.dump({'updated': datetime.datetime.now().strftime('%d %b %Y, %H:%M'), 'stats': stats, 'units': out},
+    reviews = []
+json.dump({'updated': datetime.datetime.now().strftime('%d %b %Y, %H:%M'), 'stats': stats, 'reviews': reviews, 'units': out},
           open('availability.json', 'w'), indent=1, ensure_ascii=False)
 for s in out: print(s['group'], s['name'], s['status'], s['until'])
