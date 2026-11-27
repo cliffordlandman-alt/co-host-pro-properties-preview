@@ -38,11 +38,11 @@ try:
     d = {'profile_url': PROFILE, 'checked': datetime.datetime.now().strftime('%d %b %Y, %H:%M'),
          'live_listings': len(ids), 'listing_ids': ids, 'superhost': 'Superhost' in text,
          'reviews': int(rev.group(1)), 'rating': float(rat.group(1)) if rat else None}
-    def excerpt(t, n=190):
+    def excerpt(t, n=150):
         t = re.sub(r'\s+', ' ', t).strip()
         if len(t) <= n: return t
         cut = t[:n]; k = max(cut.rfind('. '), cut.rfind('! '))
-        return (cut[:k+1] if k > 80 else cut[:cut.rfind(' ')] + '…')
+        return (cut[:k+1] if k > 60 else cut[:cut.rfind(' ')] + '…')
     good = [{'name': r['name'], 'date': r['date'], 'rating': r['rating'], 'text': excerpt(r['text'])}
             for r in reviews if r.get('name') and r.get('date') and len(r.get('text', '')) >= 20]
     if good:

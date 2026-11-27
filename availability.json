@@ -1,5 +1,5 @@
 {
- "updated": "27 Nov 2026, 19:32",
+ "updated": "27 Nov 2026, 19:47",
  "stats": {
   "homes": 16,
   "dubai": 12,
@@ -13,7 +13,7 @@
   "airbnb_rating": 4.97,
   "airbnb_superhost": true,
   "airbnb_profile": "https://www.airbnb.ae/users/profile/1470016653640626482",
-  "airbnb_checked": "27 Nov 2026, 19:32"
+  "airbnb_checked": "27 Nov 2026, 19:47"
  },
  "reviews": [
   {
@@ -62,7 +62,7 @@
    "name": "Sylvester",
    "date": "September 2026",
    "rating": 5,
-   "text": "The place was amazing, the bed was very comfortable, such a private space that offered me quality time to simple relax and reflect. I’ll definitely book there again."
+   "text": "The place was amazing, the bed was very comfortable, such a private space that offered me quality time to simple relax and reflect."
   },
   {
    "name": "Gert",
@@ -134,7 +134,7 @@
    "name": "Azza",
    "date": "July 2026",
    "rating": 5,
-   "text": "I booked this place last minute, and Clifford was very helpful and accommodating. The place is beautiful and was a perfect for getting away but staying close to the city center."
+   "text": "I booked this place last minute, and Clifford was very helpful and accommodating."
   },
   {
    "name": "Puneet",
@@ -176,7 +176,7 @@
    "name": "Chadd",
    "date": "June 2026",
    "rating": 5,
-   "text": "Our stay was absolutely amazing, peaceful and quiet,the place was nice and neat. I would highly recommend it to anyone who want to have a good experience, we will definitely visit them…"
+   "text": "Our stay was absolutely amazing, peaceful and quiet,the place was nice and neat."
   }
  ],
  "units": [
